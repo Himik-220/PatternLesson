@@ -9,11 +9,15 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
+    var userManager = UserManager.configuredManager()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            let user = self.userManager.obtainMainUser()
+            user.info = "Updated info 2"
+        }
+        
         return true
     }
 
